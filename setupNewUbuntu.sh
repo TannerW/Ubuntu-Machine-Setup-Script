@@ -18,7 +18,7 @@ then
 	done
 
 	echo "\n\n Great! I'll take care of installing the full-suite of tools for you. Sit back and relax, this may take a few mintues...\n\n"
-else
+#else
 	# while getopts ":ht" opt; do
 	#   case ${opt} in
 	#     --full-suite ) # process option a
