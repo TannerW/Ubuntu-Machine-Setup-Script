@@ -1,30 +1,82 @@
-sudo apt-get -y update
-sudo apt-get -y upgrade
+#!/usr/bin/env bash
+
+# Helper function used to send messages to STDERR
+err() {
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+}
+
+# Check for valid input arguments
+if [ "$#" -lt "1" ]
+then
+	while true; do
+	    read -p "!!! No install options detected !!! \n Does this mean you wish to install the full suite of applications targeted by this setup script? (Not sure? Please response No to see a list of options) [y/n]:" yn
+	    case $yn in
+	        [Yy]* ) break;;
+	        [Nn]* ) err "USAGE: $0 [--full-suite | ] "; exit 1;;
+	        * ) echo "Please answer yes or no.";;
+	    esac
+	done
+
+	echo "\n\n Great! I'll take care of installing the full-suite of tools for you. Sit back and relax, this may take a few mintues...\n\n"
+else
+	# while getopts ":ht" opt; do
+	#   case ${opt} in
+	#     --full-suite ) # process option a
+	#       ;;
+	#     t ) # process option t
+	#       ;;
+	#     \? ) echo "Usage: cmd [--full-suite | --"
+	#       ;;
+	#   esac
+	# done
+fi
+
+#set -o errexit
+set -o pipefail # 
+set -o nounset # Exit if an undeclared variable is referenced
+set -o xtrace # Trace executed commands... you can disable this unless you are debugging
+
+# Set magic variables for current file & dir
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+__base="$(basename ${__file} .sh)"
+__root="$(cd "$(dirname "${__dir}")" && pwd)"
+
+
+
+sudo apt-get --yes update
+sudo apt-get --yes upgrade
 
 # install and setup ssh
-sudo apt-get -y install openssh-server
-sudo systemctl start ssh #just to make sure
-sudo systemctl enable ssh #just to make sure
+sudo apt-get --yes install openssh-server
+sudo systemctl start ssh # Probably default, but just to make sure
+sudo systemctl enable ssh # Probably default, but just to make sure
 
-# install vncserver and xrdp so i can remote decktop into gnome :P 
-# cause ya know... sometimes pure CLI is exhausting for interface
-# oriented stuff
-sudo apt-get -y install tightvncserver
-sudo apt-get -y install xrdp
-sudo service xrdp restart # just in case... cant hurt
+# install vncserver and xrdp so i can remote desktop into gnome
+sudo apt-get --yes install tightvncserver
+sudo apt-get --yes install xrdp
+sudo service xrdp restart # sometimes xrdp is oddly behaved after install.. restart just in case.
 
 # get git
-auso apt-get -y install git-core
+sudo apt-get --yes install git-core
 
-# htop... cause htop is sick...
-sudo apt-get -y install htop
+# install htop, its a better `top` experience
+sudo apt-get --yes install htop
 
-# tree... can be useful command at times
-sudo apt-get -y install tree
+# install tree, a visual and recursive approach to an `ls`
+sudo apt-get --yes install tree
 
-# rsub... because you haven't lived until you've used sublime tunneling
-sudo wget -O /usr/local/bin/rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
+# install rmate to enable the use of sublime port tunneling through ssh
+sudo wget --output-document=/usr/local/bin/rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
 sudo chmod a+x /usr/local/bin/rmate
 
-# cmake... to make life easier
-sudo apt-get -y install cmake
+# install cmake 
+sudo apt-get --yes install cmake
+
+# install build-essentials to make sure you hjave your C/C++ essentials
+sudo apt-get --yes install build-essential
+
+# install node and node's package manager
+sudo apt-get --yes install nodejs npm
+
+echo "\n\n ... And there you go! It looks like everything went well during the installation process and your Ubuntu environment is ready for use!"
