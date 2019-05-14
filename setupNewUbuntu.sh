@@ -13,6 +13,9 @@ sudo apt-get -y install tightvncserver
 sudo apt-get -y install xrdp
 sudo service xrdp restart # just in case... cant hurt
 
+# get git
+auso apt-get -y install git-core
+
 # htop... cause htop is sick...
 sudo apt-get -y install htop
 
@@ -20,11 +23,8 @@ sudo apt-get -y install htop
 sudo apt-get -y install tree
 
 # rsub... because you haven't lived until you've used sublime tunneling
-sudo wget -O /usr/local/bin/rsub https://raw.github.com/aurora/rmate/master/rmate
-sudo chmod +x /usr/local/bin/rsub
-
-# vim... duh
-sudo apt-get -y install vim
+sudo wget -O /usr/local/bin/rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
+sudo chmod a+x /usr/local/bin/rmate
 
 # cmake... to make life easier
 sudo apt-get -y install cmake
