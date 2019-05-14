@@ -1,12 +1,22 @@
-.TH  
-.SH INSTALLATION TYPE OPTIONS
+.TH 
+.SH BASIC OPTIONS
+.TP
+\fB \-\-help (DEFAULT)\fP
+Present the script help screen.
+.SH INSTALLATION TYPE OPTIONS (If none of these are given, then the default is chosen)
 .TP
 \fB \-\-full-suite (DEFAULT)\fP
 The full suite installation will install every single package and application highlighted in the README.md.
 .TP
 \fB \-\-uninstall-full-suite\fP
 Will remove/uninstall every single package and application highlighted in the README.md.
-.SH INSTALLATION MODE OPTIONS (None enabled by default)
+.SH INSTALLATION MODE OPTIONS (None enabled by default. All of these are truly optional)
 .TP
 \fB \-\-fast-mode\fP
 Attempts to speed things up a bit by running multiple installs as background processes. This will cause the output of this script to become reader UNfriendly during the installation process.
+.TP
+\fB \-\-no-apt-upgrade\fP
+Skip the apt upgrade phase.
+.TP
+\fB \-\-no-apt-update\fP
+Skip the apt update phase.

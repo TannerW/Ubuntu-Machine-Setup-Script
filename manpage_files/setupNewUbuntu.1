@@ -3,6 +3,7 @@
 setupNewUbuntu \- Install packages that Tanner considers essential for a variety of tasks and workflows on a Ubuntu, Debian, Raspian and other related linux distribution that utilizes the APT package manager.
 .SH SYNOPSIS
 .B setupNewUbuntu
+[BASIC OPTIONS]
 [INSTALLATION TYPE OPTIONS]
 [INSTALLATION MODE OPTIONS]
 .SH DESCRIPTION
@@ -17,14 +18,24 @@ Will install all the packages and applications highlighted in the README.md.
 .TP
 \fB sudo ./setupNewUbuntu \-\-full-suite \-\-fast-mode\fP
 Will attempt to install all the packages and applications highlighted in the README.md at a fast pace at the tradeoff of poor readability of this script's output during the installation process.
-.SH INSTALLATION TYPE OPTIONS
+.SH BASIC OPTIONS
+.TP
+\fB \-\-help (DEFAULT)\fP
+Present the script help screen.
+.SH INSTALLATION TYPE OPTIONS (If none of these are given, then the default is chosen)
 .TP
 \fB \-\-full-suite (DEFAULT)\fP
 The full suite installation will install every single package and application highlighted in the README.md.
 .TP
 \fB \-\-uninstall-full-suite\fP
 Will remove/uninstall every single package and application highlighted in the README.md.
-.SH INSTALLATION MODE OPTIONS (None enabled by default)
+.SH INSTALLATION MODE OPTIONS (None enabled by default. All of these are truly optional)
 .TP
 \fB \-\-fast-mode\fP
 Attempts to speed things up a bit by running multiple installs as background processes. This will cause the output of this script to become reader UNfriendly during the installation process.
+.TP
+\fB \-\-no-apt-upgrade\fP
+Skip the apt upgrade phase.
+.TP
+\fB \-\-no-apt-update\fP
+Skip the apt update phase.
