@@ -21,9 +21,9 @@ err() {
 
 listOptions() {
 	temppwd="$(pwd)"
-	cd __base
+	cd "$__base"
 	man -P cat ./setupNewUbuntu.1
-	cd temppwd
+	cd "$temppwd"
 }
 
 main() {
