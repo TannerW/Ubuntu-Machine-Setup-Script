@@ -27,7 +27,7 @@ listOptions() {
 	\t\tAttempts to speed things up a bit by running multiple installs as background processes. This will cause the output of this script to become reader UNfriendly during the installation process.
 	"
 
-	printf $opts
+	printf "$opts"
 }
 
 main() {
@@ -35,7 +35,7 @@ main() {
 	if [ "$#" -lt "1" ]
 	then
 		while true; do
-		    read -p $'!!! No install version detected !!!\nDoes this mean you wish to install the full suite of applications targeted by this setup script? (Not sure? Then please response No to see a list of options)\n[y/n]:' yn
+		    read -p $'!!! No installation type option detected !!!\nDoes this mean you wish to install the full suite of applications targeted by this setup script? (Not sure? Then please response No to see a list of options)\n[y/n]:' yn
 		    case $yn in
 		        [Yy]* ) break;;
 		        [Nn]* ) err "USAGE: sudo $0 [INSTALL TYPE OPTIONS] [INSTALL MODE OPTIONS]"; listOptions; exit 1;;
