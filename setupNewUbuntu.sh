@@ -2,22 +2,22 @@
 
 # Helper function used to send messages to STDERR
 err() {
-  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+  printf "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
 }
 
 # Check for valid input arguments
 if [ "$#" -lt "1" ]
 then
 	while true; do
-	    read -p "!!! No install options detected !!! \n Does this mean you wish to install the full suite of applications targeted by this setup script? (Not sure? Please response No to see a list of options) [y/n]:" yn
+	    read -p "!!! No install options detected !!! ${echo $'\n'} Does this mean you wish to install the full suite of applications targeted by this setup script? (Not sure? Please response No to see a list of options) ${echo $'\n'}[y/n]:" yn
 	    case $yn in
 	        [Yy]* ) break;;
 	        [Nn]* ) err "USAGE: $0 [--full-suite | ] "; exit 1;;
-	        * ) echo "Please answer yes or no.";;
+	        * ) printf "Please answer yes or no.";;
 	    esac
 	done
 
-	echo "\n\n Great! I'll take care of installing the full-suite of tools for you. Sit back and relax, this may take a few mintues...\n\n"
+	printf "\n\n Great! I'll take care of installing the full-suite of tools for you. Sit back and relax, this may take a few mintues...\n\n"
 #else
 	# while getopts ":ht" opt; do
 	#   case ${opt} in
