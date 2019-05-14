@@ -2,14 +2,14 @@
 
 # Helper function used to send messages to STDERR
 err() {
-  printf "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+  printf "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@ \n\n" >&2
 }
 
 # Check for valid input arguments
 if [ "$#" -lt "1" ]
 then
 	while true; do
-	    read -p "!!! No install options detected !!! `echo $'\n'` Does this mean you wish to install the full suite of applications targeted by this setup script? (Not sure? Please response No to see a list of options) `echo $'\n'`[y/n]:" yn
+	    read -p $'!!! No install options detected !!! \n Does this mean you wish to install the full suite of applications targeted by this setup script? (Not sure? Please response No to see a list of options) \n[y/n]:' yn
 	    case $yn in
 	        [Yy]* ) break;;
 	        [Nn]* ) err "USAGE: $0 [--full-suite | ] "; exit 1;;
