@@ -1,30 +1,30 @@
-.Th Tanner's setupNewUbuntu(1)
-.Sh NAME
+.TH Tanner's setupNewUbuntu(1)
+.SH NAME
 setupNewUbuntu \- Install packages that Tanner considers essential for a variety of tasks and workflows on a Ubuntu, Debian, Raspian and other related linux distribution that utilizes the APT package manager.
-.Sh SYNOPSIS
+.SH SYNOPSIS
 .B setupNewUbuntu
 [INSTALLATION TYPE OPTIONS]
 [INSTALLATION MODE OPTIONS]
-.Sh DESCRIPTION
+.SH DESCRIPTION
 .B setupNewUbuntu
 This script will automate the process of setting up a new Ubuntu instance with the packages that Tanner finds essential to any of his own Ubuntu instances. Tanner uses this script anytime he finds himself on a fresh Ubuntu machine.
 
 PLEASE NOTE: This script is not dedicated to Ubuntu. It can actually be used on any machine that has access to the APT package manager. So, that includes Ubuntu, Debian, Raspian and other related linux distributions.
-.Sh EXAMPLE
-.Tp
+.SH EXAMPLE
+.TP
 \fB sudo ./setupNewUbuntu \-\-full-suite\fP
 Will install all the packages and applications highlighted in the README.md.
-.Tp
+.TP
 \fB sudo ./setupNewUbuntu \-\-full-suite \-\-fast-mode\fP
 Will attempt to install all the packages and applications highlighted in the README.md at a fast pace at the tradeoff of poor readability of this script's output during the installation process.
-.Sh INSTALLATION TYPE OPTIONS
-.Tp
+.SH INSTALLATION TYPE OPTIONS
+.TP
 \fB \-\-full-suite (DEFAULT)\fP
 The full suite installation will install every single package and application highlighted in the README.md.
-.Tp
+.TP
 \fB \-\-uninstall-full-suite\fP
 Will remove/uninstall every single package and application highlighted in the README.md.
-.Sh INSTALLATION MODE OPTIONS (None enabled by default)
-.Tp
+.SH INSTALLATION MODE OPTIONS (None enabled by default)
+.TP
 \fB \-\-fast-mode\fP
 Attempts to speed things up a bit by running multiple installs as background processes. This will cause the output of this script to become reader UNfriendly during the installation process.
