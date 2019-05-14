@@ -1,5 +1,5 @@
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get -y update
+sudo apt-get -y upgrade
 
 # install and setup ssh
 sudo apt-get -y install openssh-server
