@@ -90,8 +90,8 @@ main() {
 	sudo service xrdp restart # sometimes xrdp is oddly behaved after install.. restart just in case.
 
 	# install rmate to enable the use of sublime port tunneling through ssh
-	sudo wget --output-document=/usr/local/bin/rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
-	sudo chmod a+x /usr/local/bin/rmate
+	sudo wget --output-document=/usr/local/bin/rsub https://raw.github.com/aurora/rmate/master/rmate
+	sudo chmod a+x /usr/local/bin/rsub
 
 
 
