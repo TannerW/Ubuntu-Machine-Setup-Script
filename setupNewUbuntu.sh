@@ -8,26 +8,22 @@ readonly QOLPACKAGELIST=(htop tree)
 readonly CODEPACKAGELIST=(git-core cmake build-essential)
 readonly WEBPACKAGELIST=(nodejs npm)
 
+# Set magic variables for current file & dir
+readonly __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+readonly __base="$(basename ${__file} .sh)"
+readonly __root="$(cd "$(dirname "${__dir}")" && pwd)"
+
 # Helper function used to send messages to STDERR
 err() {
   printf "\n\n[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@\n\n" >&2
 }
 
 listOptions() {
-	opts="
-	Installation Type Options\n
-	\t--full-suite (DEFAULT)\n
-	\t\tThe full suite installation will install every single package and application highlighted in the README.md.
-	\n\n
-	\t--uninstall-full-suite\n
-	\t\tWill remove/uninstall every single package and application highlighted in the README.md.
-	\n\n\n
-	Installation Mode Options (None enabled by default)\n
-	\t--fast-mode\n
-	\t\tAttempts to speed things up a bit by running multiple installs as background processes. This will cause the output of this script to become reader UNfriendly during the installation process.
-	"
-
-	printf "$opts"
+	temppwd="$(pwd)"
+	cd __base
+	man -P cat ./setupNewUbuntu.1
+	cd temppwd
 }
 
 main() {
@@ -61,13 +57,6 @@ main() {
 	set -o pipefail # 
 	set -o nounset # Exit if an undeclared variable is referenced
 	set -o xtrace # Trace executed commands... you can disable this unless you are debugging
-
-	# Set magic variables for current file & dir
-	__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-	__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
-	__base="$(basename ${__file} .sh)"
-	__root="$(cd "$(dirname "${__dir}")" && pwd)"
-
 
 
 	#update the package repo
