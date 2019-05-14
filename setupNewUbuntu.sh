@@ -14,7 +14,7 @@ err() {
 }
 
 listOptions() {
-	man -P cat "$(basename ${__file} .sh)"/setupNewUbuntu.1
+	man -P cat "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"/setupNewUbuntu.1
 }
 
 main() {
