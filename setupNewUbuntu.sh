@@ -14,14 +14,14 @@ err() {
 }
 
 listOptions() {
-	man -P cat "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"/setupNewUbuntu.1
+	man -P cat "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"/manpage_files/setupNewUbuntuOptionsOnly.1
 }
 
 main() {
 	#set -o errexit
 	set -o pipefail # 
 	set -o nounset # Exit if an undeclared variable is referenced
-	set -o xtrace # Trace executed commands... you can disable this unless you are debugging
+	#set -o xtrace # Trace executed commands... you can disable this unless you are debugging
 
 	# Set magic variables for current file & dir
 	__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
