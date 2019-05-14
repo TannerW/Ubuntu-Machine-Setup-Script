@@ -8,12 +8,6 @@ readonly QOLPACKAGELIST=(htop tree)
 readonly CODEPACKAGELIST=(git-core cmake build-essential)
 readonly WEBPACKAGELIST=(nodejs npm)
 
-# Set magic variables for current file & dir
-readonly __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
-readonly __base="$(basename ${__file} .sh)"
-readonly __root="$(cd "$(dirname "${__dir}")" && pwd)"
-
 # Helper function used to send messages to STDERR
 err() {
   printf "\n\n[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@\n\n" >&2
@@ -24,6 +18,23 @@ listOptions() {
 }
 
 main() {
+	#set -o errexit
+	set -o pipefail # 
+	set -o nounset # Exit if an undeclared variable is referenced
+	set -o xtrace # Trace executed commands... you can disable this unless you are debugging
+
+	# Set magic variables for current file & dir
+	__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+	__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+	__base="$(basename ${__file} .sh)"
+	__root="$(cd "$(dirname "${__dir}")" && pwd)"
+
+	echo "$__dir"
+	echo "$__file"
+	echo "$__base"
+	echo "$__root"
+
+
 	# Check for valid input arguments
 	if [ "$#" -lt "1" ]
 	then
@@ -49,18 +60,6 @@ main() {
 		#   esac
 		# done
 	fi
-
-	#set -o errexit
-	set -o pipefail # 
-	set -o nounset # Exit if an undeclared variable is referenced
-	set -o xtrace # Trace executed commands... you can disable this unless you are debugging
-
-	# Set magic variables for current file & dir
-	__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-	__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
-	__base="$(basename ${__file} .sh)"
-	__root="$(cd "$(dirname "${__dir}")" && pwd)"
-
 
 
 	#update the package repo
