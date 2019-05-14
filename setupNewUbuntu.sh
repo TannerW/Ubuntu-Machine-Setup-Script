@@ -136,4 +136,4 @@ main() {
 	printf "\n\n ... And there you go! It looks like everything went well during the installation process and your Ubuntu environment is ready for use!"
 }
 
-main()
+main
