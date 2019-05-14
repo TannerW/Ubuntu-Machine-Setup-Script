@@ -9,7 +9,7 @@ err() {
 if [ "$#" -lt "1" ]
 then
 	while true; do
-	    read -p "!!! No install options detected !!! ${echo $'\n'} Does this mean you wish to install the full suite of applications targeted by this setup script? (Not sure? Please response No to see a list of options) ${echo $'\n'}[y/n]:" yn
+	    read -p "!!! No install options detected !!! `echo $'\n'` Does this mean you wish to install the full suite of applications targeted by this setup script? (Not sure? Please response No to see a list of options) `echo $'\n'`[y/n]:" yn
 	    case $yn in
 	        [Yy]* ) break;;
 	        [Nn]* ) err "USAGE: $0 [--full-suite | ] "; exit 1;;
