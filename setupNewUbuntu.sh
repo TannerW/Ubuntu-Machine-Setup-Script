@@ -20,10 +20,7 @@ err() {
 }
 
 listOptions() {
-	temppwd="$(pwd)"
-	cd "$__base"
-	man -P cat ./setupNewUbuntu.1
-	cd "$temppwd"
+	man -P cat "$(basename ${__file} .sh)"/setupNewUbuntu.1
 }
 
 main() {
@@ -57,6 +54,13 @@ main() {
 	set -o pipefail # 
 	set -o nounset # Exit if an undeclared variable is referenced
 	set -o xtrace # Trace executed commands... you can disable this unless you are debugging
+
+	# Set magic variables for current file & dir
+	__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+	__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+	__base="$(basename ${__file} .sh)"
+	__root="$(cd "$(dirname "${__dir}")" && pwd)"
+
 
 
 	#update the package repo
