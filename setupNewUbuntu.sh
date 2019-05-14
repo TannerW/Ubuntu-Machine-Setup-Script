@@ -1,6 +1,11 @@
 sudo apt-get update
 sudo apt-get upgrade
 
+# install and setup ssh
+sudo apt-get -y install openssh-server
+sudo systemctl start ssh #just to make sure
+sudo systemctl enable ssh #just to make sure
+
 # install vncserver and xrdp so i can remote decktop into gnome :P 
 # cause ya know... sometimes pure CLI is exhausting for interface
 # oriented stuff
